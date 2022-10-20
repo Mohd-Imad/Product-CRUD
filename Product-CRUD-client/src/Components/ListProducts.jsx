@@ -19,11 +19,10 @@ const ListProducts = () => {
             products.map((product)=>{
               return <div className="col-md-3">
                 <div className="card mt-5">
-                  <div className="card-header"></div>
+                  <div className="card-header"><center><img src={product.image}height='120pc' width='100pc' alt="" /></center></div>
                     <div className="card-body">
                       <ul className="list-group">
                         <li className="list-group-item">{product.name}</li>
-                        <li className="list-group-item">{product.image}</li>
                         <li className="list-group-item">{product.price}</li>
                         <li className="list-group-item">{product.qty}</li>
                       </ul>
@@ -33,7 +32,7 @@ const ListProducts = () => {
             })
           }
           </> : 
-          <h1>No Products are created</h1>
+          <h1 className='mt-3'>No Products are created.....</h1>
         }
         </div>
       </div>

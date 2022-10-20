@@ -1,20 +1,26 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Axios from 'axios'
-import { Navigate } from 'react-router-dom'
+import { Navigate,Link } from 'react-router-dom'
 
 const Admin = () => {
   let [products, setProducts] = useState([])
   let [dummy, setDummy] = useState(false)
-  useEffect(() => {
+  
+  useEffect(()=>{
+    getAllProducts()
+  },[])
+  
+  let getAllProducts = ()=>{
     Axios.get("http://127.0.0.1:5000/api/products").then((res) => {
       setProducts(res.data)
     }).catch(() => { })
-  }, [])
+  }
+
 
   let deleteProduct = (id) => {
     let url = `http://127.0.0.1:5000/api/products/${id}`
-    Axios.delete(url).then(() => { }).catch((res) => {
+    Axios.delete(url).then((res) => {getAllProducts()}).catch((err) => {
       setDummy(true)
     })
   }
@@ -31,9 +37,9 @@ const Admin = () => {
                   <thead className='bg-dark text-white'>
                     <tr>
                       <th>Product Name</th>
-                      <th>Image</th>
                       <th>Price</th>
                       <th>QTY</th>
+                      <th>Image</th>
                       <th>Admin's Action</th>
                     </tr>
                   </thead>
@@ -44,17 +50,18 @@ const Admin = () => {
                           products.map((product) => {
                             return <tr key={product.id}>
                               <td>{product.name}</td>
-                              <td>{product.image}</td>
                               <td>{product.price}</td>
                               <td>{product.qty}</td>
+                              <td><img src={product.image}height='80px' alt="" /></td>
                               <td>
-                                <button className='btn btn-warning'>Edit &nbsp;<i className='fa fa-pen'></i></button>&nbsp;
+                                <Link to='/UpdateProduct' className='btn btn-warning'>Edit &nbsp;<i className='fa fa-pen'></i></Link>&nbsp;
                                 <button className='btn btn-danger' onClick={deleteProduct.bind(this, product._id)}>Del &nbsp;<i className='fa fa-trash'></i></button>
                               </td>
                             </tr>
                           })
                         }
-                      </> : <h1>No Products are created</h1>
+                      </> : <h1 className='mt-3'>No Products.....</h1>
+
                     }
                   </tbody>
                 </table>

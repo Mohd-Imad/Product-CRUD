@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 import { Navigate } from 'react-router-dom'
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
   let [product, setProduct] = useState({
     name: "",
     image: "",
@@ -49,8 +49,8 @@ const CreateProduct = () => {
               <div className="row">
                 <div className="col-md-5">
                   <div className="card">
-                    <div className="card-header bg-primary text-white text-center">
-                      <h1>Create Product</h1>
+                    <div className="card-header bg-dark text-white text-center">
+                      <h1>Update Product</h1>
                     </div>
                     <div className="card-body">
                       <form onSubmit={submitHandler}>
@@ -69,7 +69,7 @@ const CreateProduct = () => {
                         <div className="form-group">
                           <input type="text" name="info" placeholder='Info' className='form-control' onChange={productData} />
                         </div>
-                        <input type="submit" value="Create Product" className='btn btn-primary' />
+                        <input type="submit" value="Update Product" className='btn btn-dark text-white' />
                       </form>
                     </div>
                   </div>
@@ -82,4 +82,4 @@ const CreateProduct = () => {
   )
 }
 
-export default CreateProduct
+export default UpdateProduct
