@@ -14,7 +14,7 @@ let App=()=>{
                 <Route path='/CreateProduct' element={<CreateProduct />} />
                 <Route path='/ListProducts' element={<ListProducts />} />
                 <Route path='/Admin' element={<Admin />} />
-                <Route path='/UpdateProduct' element={<UpdateProduct />} />
+                <Route path='/UpdateProduct/:id' element={<UpdateProduct />} />
             </Routes>
         </Router>
     </>

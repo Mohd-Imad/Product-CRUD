@@ -22,9 +22,9 @@ const ListProducts = () => {
                   <div className="card-header"><center><img src={product.image}height='120pc' width='100pc' alt="" /></center></div>
                     <div className="card-body">
                       <ul className="list-group">
-                        <li className="list-group-item">{product.name}</li>
-                        <li className="list-group-item">{product.price}</li>
-                        <li className="list-group-item">{product.qty}</li>
+                        <li className="list-group-item"><b>Name : </b>{product.name}</li>
+                        <li className="list-group-item"><b>Price : </b>{product.price}</li>
+                        <li className="list-group-item"><b>QTY : </b>{product.qty}</li>
                       </ul>
                     </div>
                   </div>

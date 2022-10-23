@@ -18,8 +18,8 @@ const Admin = () => {
   }
 
 
-  let deleteProduct = (id) => {
-    let url = `http://127.0.0.1:5000/api/products/${id}`
+  let deleteProduct = (productId) => {
+    let url = `http://127.0.0.1:5000/api/products/${productId}`
     Axios.delete(url).then((res) => {getAllProducts()}).catch((err) => {
       setDummy(true)
     })
@@ -48,13 +48,13 @@ const Admin = () => {
                       products.length > 0 ? <>
                         {
                           products.map((product) => {
-                            return <tr key={product.id}>
+                            return <tr key={product._id}>
                               <td>{product.name}</td>
                               <td>{product.price}</td>
                               <td>{product.qty}</td>
                               <td><img src={product.image}height='80px' alt="" /></td>
                               <td>
-                                <Link to='/UpdateProduct' className='btn btn-warning'>Edit &nbsp;<i className='fa fa-pen'></i></Link>&nbsp;
+                                <Link to={`/UpdateProduct/${product._id}`} className='btn btn-warning'>Edit &nbsp;<i className='fa fa-pen'></i></Link>&nbsp;
                                 <button className='btn btn-danger' onClick={deleteProduct.bind(this, product._id)}>Del &nbsp;<i className='fa fa-trash'></i></button>
                               </td>
                             </tr>
